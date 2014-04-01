@@ -56,6 +56,9 @@ module.exports = (robot) ->
     # Return on empty messages
     return if !msg.message.text
 
+    # Ignore messages sent by PM
+    return unless msg.message.room?
+
     model.learn msg.message.text
 
     # Chance to randomly respond un-prompted
