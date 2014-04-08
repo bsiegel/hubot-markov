@@ -59,6 +59,9 @@ module.exports = (robot) ->
     # Ignore messages sent by PM
     return unless msg.message.room?
 
+    # Ignore messages sent via API
+    return unless msg.message.user.jid?
+
     model.learn msg.message.text
 
     # Chance to randomly respond un-prompted
